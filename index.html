@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ui Gradients</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/60779b5bf6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__top">
+        <div class="header__top-left">
+          <div class="header__logo-ctr">
+            <p class="header__logo">uigradients</p>
+          </div>
+          <div class="header__sponser-ctr">
+            <span class="sponser-pre-plus"> + </span>
+            <a href="#" class="sponser-link">SKILLSHARE</a>
+            <a href="#" class="sponser-btn">Get 2 months free ▶</a>
+          </div>
+        </div>
+
+        <div class="header__top-right">
+          <a href="#" class="btn-twitter"
+            ><i class="fa-brands fa-twitter"></i> Share on Twitter</a
+          >
+          <a href="#" class="btn-facebook"
+            ><i class="fa-brands fa-facebook-square"></i> Share on Facebook</a
+          >
+          <a href="#" class="btn-github"
+            ><img
+              src="https://img.icons8.com/glyph-neue/344/github.png"
+              alt="Github"
+          /></a>
+        </div>
+      </div>
+
+      <div class="header__bottom">
+        <div class="hamburger-menu-ctr">
+          <i class="fa fa-bars"></i
+          ><span class="hamburger-menu-text">Show All Gradients</span>
+
+          <!-- Show all gradients menu  -->
+          <div class="show-all-gradients-menu-ctr"></div>
+        </div>
+        <div class="color-codes-ctr">
+          <div class="color-code-ctr">
+            <span class="color-preview"></span>
+            <span class="color-code" onclick="copyCode()"></span>
+          </div>
+          <div class="color-code-ctr">
+            <span class="color-preview"></span>
+            <span class="color-code" onclick="copyCode()"></span>
+          </div>
+          <div class="color-code-ctr">
+            <span class="color-preview"></span>
+            <span class="color-code" onclick="copyCode()"></span>
+          </div>
+          <div class="color-code-ctr">
+            <span class="color-preview"></span>
+            <span class="color-code" onclick="copyCode()"></span>
+          </div>
+        </div>
+
+        <div class="color-functionality-ctr">
+          <div class="color-function rotate-gradient">
+            <i class="fa fa-rotate-right"></i>
+          </div>
+          <div class="color-function copy-css">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <div class="color-function add-gradient">
+            <i class="fa fa-plus"></i>
+          </div>
+          <div class="color-function download-jpg-btn">
+            <i class="fa fa-arrow-down"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="hero-section">
+      <div class="gradient-ctr">
+        <h1 class="gradient-name"></h1>
+        <span class="gradient-previous-btn"
+          ><i class="fa fa-angle-left"></i
+        ></span>
+        <span class="gradient-next-btn"><i class="fa fa-angle-right"></i></span>
+      </div>
+    </section>
+    <script src="js/script.js"></script>
+  </body>
+</html>
