@@ -245,3 +245,33 @@ body {
   font-size: 3.2rem;
   color: #fff;
 }
+
+@media screen and (max-width: 85rem) {
+  .header__sponser-ctr {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 57rem) {
+  .hamburger-menu-ctr {
+    display: none;
+  }
+
+  .color-functionality-ctr {
+    display: none;
+  }
+
+  .header__bottom {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 40rem) {
+  .header__top-right {
+    display: none;
+  }
+
+  .header__top {
+    justify-content: center;
+  }
+}
