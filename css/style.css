@@ -137,7 +137,7 @@ body {
 .color-codes-ctr {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   overflow-x: auto;
 }
