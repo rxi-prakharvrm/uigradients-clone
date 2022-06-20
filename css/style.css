@@ -139,6 +139,25 @@ body {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  overflow-x: auto;
+}
+
+.color-codes-ctr::-webkit-scrollbar {
+  height: 0;
+  width: 100%;
+}
+
+.color-codes-ctr::-webkit-scrollbar-track {
+  background-color: #000;
+}
+
+.color-codes-ctr::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.color-codes-ctr::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .color-code-ctr {
@@ -161,6 +180,10 @@ body {
   color: #333;
   font-size: 1.6rem;
   cursor: pointer;
+}
+
+.color-code::selection {
+  user-select: none;
 }
 
 .color-functionality-ctr {
@@ -213,6 +236,7 @@ body {
   top: 2%;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
   color: #fff;
   font-weight: lighter;
 }
