@@ -26,8 +26,28 @@ const gradients = [
   },
   {
     id: 5,
-    name: "RXI Gradient",
-    color: ["#b92b27", "#fe09ee", "#7293ee", "#e873ee", "#23ee5f", "#e7aa78"],
+    name: "Sherbert",
+    color: ["#f79d00", "#64f38c"],
+  },
+  {
+    id: 6,
+    name: "Jupiter",
+    color: ["#ffd89b", "#19547b"],
+  },
+  {
+    id: 7,
+    name: "FireWatch",
+    color: ["#cb2d3e", "#ef473a"],
+  },
+  {
+    id: 8,
+    name: "Hydrogen",
+    color: ["#667db6", "#0082c8", "#0082c8", "#667db6"],
+  },
+  {
+    id: 9,
+    name: "Jodhpur",
+    color: ["#9cecfb", "#65c7f7", "#0052D4", "#0052ee"],
   },
 ];
 
@@ -37,6 +57,7 @@ const gradientName = document.querySelector(".gradient-name");
 const colorCodesCtr = document.querySelector(".color-codes-ctr");
 const gradientNextBtn = document.querySelector(".gradient-next-btn");
 const gradientPreviousBtn = document.querySelector(".gradient-previous-btn");
+const rotateGradientBtn = document.querySelector(".rotate-gradient");
 
 //creating elements
 var colorCodes;
@@ -59,7 +80,9 @@ function creatingColorCodeCtr() {
 
 // Default Gradient
 const defaultColor = [];
-var gradientColor = `linear-gradient(to bottom right`;
+var vPosition = "bottom"; //top bottom
+var hPosition = "right"; // right left
+var gradientColor = `linear-gradient(to ${vPosition} ${hPosition}`;
 
 gradientName.innerHTML = gradients[0].name;
 for (let i = 0; i < 3; i++) {
@@ -74,7 +97,7 @@ for (let i = 0; i < 3; i++) {
   // Copy Hex color code
   colorCode.addEventListener("click", function () {
     navigator.clipboard.writeText(this.innerHTML);
-    alert("Code Copied!");
+    alert(`${this.innerHTML} Copied!`);
   });
 
   gradientColor += `, ${defaultColor[i]}`;
@@ -84,8 +107,6 @@ for (let i = 0; i < 3; i++) {
 }
 
 gradientCtr.style.backgroundImage = gradientColor;
-
-// gradientCtr.style.backgroundImage = `linear-gradient(to bottom right, ${defaultColor[0]}, ${defaultColor[1]}, ${defaultColor[2]}`;
 
 // Changing gradient, color preview, color code
 function changeColors() {
@@ -111,7 +132,7 @@ function changeColors() {
     // Copy Hex color code
     colorCode.addEventListener("click", function () {
       navigator.clipboard.writeText(this.innerHTML);
-      alert("Code Copied!");
+      alert(`${this.innerHTML} Copied!`);
     });
 
     // Generating Background Image linear gradient for gradient ctr through for loop
