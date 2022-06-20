@@ -21,8 +21,13 @@ const gradients = [
   },
   {
     id: 4,
-    name: "Evening Sunshine",
+    name: "Evening Star",
     color: ["#b92b27", "#1565C0", "#7293ee", "#e873ee"],
+  },
+  {
+    id: 5,
+    name: "RXI Gradient",
+    color: ["#b92b27", "#fe09ee", "#7293ee", "#e873ee", "#23ee5f", "#e7aa78"],
   },
 ];
 
@@ -30,47 +35,96 @@ const gradients = [
 const gradientCtr = document.querySelector(".gradient-ctr");
 const gradientName = document.querySelector(".gradient-name");
 const colorCodesCtr = document.querySelector(".color-codes-ctr");
-const colorPreview = document.querySelectorAll(".color-preview");
-const colorCode = document.querySelectorAll(".color-code");
 const gradientNextBtn = document.querySelector(".gradient-next-btn");
 const gradientPreviousBtn = document.querySelector(".gradient-previous-btn");
 
-var counter = 0;
-var gradientsLength = gradients.length - 1;
+//creating elements
+var colorCodes;
+var colorPreview;
+var colorCode;
+
+function creatingColorCodeCtr() {
+  colorCodeCtr = document.createElement("div");
+  colorPreview = document.createElement("span");
+  colorCode = document.createElement("span");
+
+  colorCodeCtr.classList.add("color-code-ctr");
+  colorPreview.classList.add("color-preview");
+  colorCode.classList.add("color-code");
+
+  colorCodesCtr.appendChild(colorCodeCtr);
+  colorCodeCtr.appendChild(colorPreview);
+  colorCodeCtr.appendChild(colorCode);
+}
 
 // Default Gradient
 const defaultColor = [];
+var gradientColor = `linear-gradient(to bottom right`;
 
 gradientName.innerHTML = gradients[0].name;
-
 for (let i = 0; i < 3; i++) {
-  colorPreview[i].style.backgroundColor = gradients[0].color[i];
-  colorCode[i].innerHTML = gradients[0].color[i];
+  // Creating Color Code Container
+  creatingColorCodeCtr();
+
+  // Setting default Color Codes
+  colorPreview.style.backgroundColor = gradients[0].color[i];
+  colorCode.innerHTML = gradients[0].color[i];
   defaultColor.push(gradients[0].color[i]);
+
+  // Copy Hex color code
+  colorCode.addEventListener("click", function () {
+    navigator.clipboard.writeText(this.innerHTML);
+    alert("Code Copied!");
+  });
+
+  gradientColor += `, ${defaultColor[i]}`;
+  if (i == 2) {
+    gradientColor += `)`;
+  }
 }
 
-gradientCtr.style.backgroundImage = `linear-gradient(to bottom right, ${defaultColor[0]}, ${defaultColor[1]}, ${defaultColor[2]}`;
+gradientCtr.style.backgroundImage = gradientColor;
+
+// gradientCtr.style.backgroundImage = `linear-gradient(to bottom right, ${defaultColor[0]}, ${defaultColor[1]}, ${defaultColor[2]}`;
 
 // Changing gradient, color preview, color code
 function changeColors() {
   const colorArr = [];
+  var gradientColor = `linear-gradient(to bottom right`;
   const selectedGradient = gradients.find((gradient) => {
     return gradient.id === counter;
   });
+
+  // Emptying colorCodesCtr Element
+  colorCodesCtr.innerHTML = "";
+
   gradientName.innerHTML = selectedGradient.name;
+
+  // Set colorPreview, colorCode and gradientColor
   for (let i = 0; i < selectedGradient.color.length; i++) {
-    colorPreview[i].style.backgroundColor = selectedGradient.color[i];
-    colorCode[i].innerHTML = selectedGradient.color[i];
+    creatingColorCodeCtr();
+
+    colorPreview.style.backgroundColor = selectedGradient.color[i];
+    colorCode.innerHTML = selectedGradient.color[i];
     colorArr.push(selectedGradient.color[i]);
+
+    // Copy Hex color code
+    colorCode.addEventListener("click", function () {
+      navigator.clipboard.writeText(this.innerHTML);
+      alert("Code Copied!");
+    });
+
+    // Generating Background Image linear gradient for gradient ctr through for loop
+    gradientColor += `, ${colorArr[i]}`;
+    if (i === selectedGradient.color.length - 1) {
+      gradientColor += `)`;
+    }
   }
-  if (colorArr.length === 2) {
-    gradientCtr.style.backgroundImage = `linear-gradient(to bottom right, ${colorArr[0]}, ${colorArr[1]}`;
-  } else if (colorArr.length === 3) {
-    gradientCtr.style.backgroundImage = `linear-gradient(to bottom right, ${colorArr[0]}, ${colorArr[1]}, ${colorArr[2]}`;
-  } else if (colorArr.length === 4) {
-    gradientCtr.style.backgroundImage = `linear-gradient(to bottom right, ${colorArr[0]}, ${colorArr[1]}, ${colorArr[2]}, ${colorArr[3]}`;
-  }
+  gradientCtr.style.backgroundImage = gradientColor;
 }
+
+var counter = 0;
+var gradientsLength = gradients.length - 1;
 
 // Next Gradient Button Functionality
 gradientNextBtn.addEventListener("click", () => {
@@ -88,9 +142,3 @@ gradientPreviousBtn.addEventListener("click", () => {
   }
   changeColors();
 });
-
-// Copy color codes
-// const copyCode = () => {
-//   navigator.clipboard.writeText(this.textContent);
-//   console.log(this.innerHTML);
-// };
